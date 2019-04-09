@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Stringreversal {
@@ -19,6 +20,7 @@ public class Stringreversal {
     private static void betterSolution(String str1)
     {
         int n = str1.length();
+      
         char strArr [] = str1.toCharArray();
         char temp ;
         for (int i=0;i<n/2;i++)
