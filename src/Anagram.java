@@ -1,4 +1,3 @@
-import jdk.net.SocketFlow;
 
 import java.util.Scanner;
 import java.util.Arrays;
@@ -12,8 +11,7 @@ public class Anagram {
         String s1 = str1.replaceAll("\\s", "");
 
         System.out.println("Enter the second String");
-        Scanner ob1 = new Scanner(System.in);
-        String str2 = ob1.nextLine();
+        String str2 = ob.nextLine();
         String s2 = str2.replaceAll("\\s", "");
 
         boolean status = false ;
@@ -33,44 +31,31 @@ public class Anagram {
         } else {
             System.out.println(s1 + " and " + s2 + " are not Anagrams");
         }
-        betterSolution(str1,str2);
+        if(betterSolution(str1,str2)) {
+            System.out.println(s1 + " and " + s2 + " are Anagrams");
+        } else{
+            System.out.println(s1 + " and " + s2 + " are not Anagrams");
+        }
     }
 
 
-    private static void betterSolution(String str1, String str2) {
+    private static boolean betterSolution(String str1, String str2) {
 
-        boolean status = true;
-
-        if (str1.length() != str2.length())
-        {
-            status = false;
-
+        if (str1.length() != str2.length()) {
+            return false;
         }
+
         int[] a = new int[128];
         for (int i = 0; i < str1.length(); i++) {
             a[str1.charAt(i)]++;
         }
         for (int i = 0; i < str2.length(); i++) {
-
             a[str2.charAt(i)]--;
-
-        if (a[str2.charAt(i)]<0)
-        {
-           status = false;
+            if (a[str2.charAt(i)]<0) {
+                return false;
+            }
         }
-        else{
-            status = true;
-        }
-
-        }
-        if(status)
-        {
-            System.out.println("for better "+str1+ " and" +str2+ " are Anagrams" );
-        }
-        else{
-            System.out.println("for better " +str1+ " and " +str2+ " are not Anagrams" );
-        }
-
+        return true;
     }
 }
 
